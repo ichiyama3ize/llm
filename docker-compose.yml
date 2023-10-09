@@ -1,0 +1,16 @@
+version: '3'
+services:
+  speech2text:
+    build:
+      context: ./.Containers/langchain
+      dockerfile: Dockerfile
+      args:
+        - DOCKER_UID=${DOCKER_UID}
+        - DOCKER_GID=${DOCKER_GID}
+        - DOCKER_USER=${DOCKER_USER}
+        - DOCKER_PASSWORD=${DOCKER_PASSWORD}
+    container_name: ${COMPOSE_PROJECT_NAME}-langchain
+    tty: true
+    volumes:
+      - ./llm-work:/home/${DOCKER_USER}/work
+    user: ${DOCKER_UID}:${DOCKER_GID}
