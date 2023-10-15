@@ -16,14 +16,14 @@ RUN useradd -m --uid $DOCKER_UID --groups sudo $DOCKER_USER \
 USER $DOCKER_USER
 
 # pyenv:  for manage py versions
+
+RUN git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+ENV PYENV_ROOT /home/$DOCKER_USER/.pyenv
+ENV PATH $PYENV_ROOT/bin:$PATH
+ENV PATH $PYENV_ROOT/bin/shims:$PATH
+
 # poetry: for manage py library versions
-RUN git clone https://github.com/pyenv/pyenv.git ~/.pyenv && \
-    curl -sSL https://install.python-poetry.org | python -
-
-ENV PYENV_ROOT /home/$DOCKER_USER/.pyenv \
-    PATH $PYENV_ROOT/bin:$PATH \
-    PATH $PYENV_ROOT/bin/shims:$PATH
-
+RUN curl -sSL https://install.python-poetry.org | python -
 ENV PATH /home/$DOCKER_USER/.local/bin:$PATH
 
 # python
