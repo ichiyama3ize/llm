@@ -7,6 +7,7 @@
 
 # 個々のプロジェクト
 ./projects
+llm-work/data
 
 # その他、個人的な設定
 Makefile
