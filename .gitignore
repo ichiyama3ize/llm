@@ -6,8 +6,8 @@
 .env
 
 # 個々のプロジェクト
-./projects
-llm-work/data
+projects/data
+projects/llm/models/*
 
 # その他、個人的な設定
 Makefile
